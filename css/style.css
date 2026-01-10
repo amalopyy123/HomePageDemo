@@ -1,0 +1,663 @@
+/* style.css */
+
+/* --- 通用重置 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  /* 大屏幕下的背景色 (两侧留白颜色) */
+  background-color: #f0f2f5;
+}
+
+/* --- 核心布局包裹层 (限制最大宽度 1440px) --- */
+.layout-wrapper {
+  max-width: 1440px;
+  margin: 0 auto; /* 居中 */
+  background-color: #fff; /* 内容区域背景为白色 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* 可选：给内容加一点阴影区分 */
+  position: relative;
+  overflow-x: hidden; /* 防止内部绝对定位元素溢出 */
+}
+
+/* 内部容器：用于限制文字内容的宽度 (通常 1000-1200px) */
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Header 样式 --- */
+header {
+  background-color: #222;
+  padding: 10px 40px;
+  position: relative;
+  z-index: 1000;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* 限制 Logo 高度 */
+  display: block;
+}
+
+/* 导航菜单 (PC端靠右) */
+.main-nav {
+  margin-left: auto; /* 自动占据左侧空间，推到右边 */
+  margin-right: 20px; /* 与按钮的距离 */
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 头部咨询按钮 */
+.btn-cta-header {
+  background: linear-gradient(to right, #bf5331, #ef6a5a);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* 汉堡按钮 (默认隐藏) */
+.hamburger {
+  display: none;
+}
+
+/* --- Hero Section (首屏) --- */
+.hero {
+  background-color: #eef4f9;
+  position: relative;
+  padding-bottom: 120px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  /* 1. 关键：设置 relative 和 overflow: hidden 以便裁剪超出部分的图片 */
+  position: relative;
+  overflow: hidden;
+
+  /* 保证容器至少有图片的高度，或者由内容撑开 */
+  min-height: 524px;
+  display: flex;
+  justify-content: center;
+}
+
+/* --- 人物定位核心代码 --- */
+.hero-img {
+  position: absolute;
+  bottom: 0;
+  /* 2. 关键：统一高度为 524px，宽度自适应 */
+  height: 524px;
+  width: auto;
+  pointer-events: none; /* (可选) 防止图片遮挡点击，如果文字在图片上方 */
+}
+
+.girl-left {
+  /* 3. 左侧对齐，层级较高 */
+  left: 0;
+  z-index: 5;
+  max-width: 646px;
+  height: 524px;
+  width: 100%;
+  object-fit: cover;
+  object-position: left top;
+  /* 确保宽度属性允许图片伸缩（配合父级的 width: auto） */
+
+  /* 1. 针对 Chrome, Safari, Edge 的写法 */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black calc(100% - 20px),
+    /* 从左边一直到距离右边20px的地方，都是完全可见 */ transparent 100%
+      /* 到最右边时，完全透明 */
+  );
+
+  /* 2. 标准写法 (Firefox 等) */
+  mask-image: linear-gradient(
+    to right,
+    black calc(100% - 20px),
+    transparent 100%
+  );
+}
+
+.girl-right {
+  /* 4. 右侧对齐，层级最低 */
+  right: 0;
+  z-index: 1;
+
+  /* 解释：如果这张图很宽，它会向左延伸。
+       因为父容器有 overflow: hidden，
+       超出容器左边的部分会自动看不见 */
+}
+
+/* --- 中间文字内容 --- */
+.hero-content {
+  position: relative;
+  padding-top: 64px;
+  /* 5. 确保文字在所有图片之上 */
+  z-index: 10;
+  max-width: 600px;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+
+  /* 定位保持不变 */
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 尺寸调整：为了防止渐变被切断，可以稍微大一点 */
+  width: 130%;
+  height: 100%;
+
+  /* --- 核心修改 Start --- */
+
+  /* 移除之前的 background-color 和 border-radius */
+  /* 使用径向渐变：从中心(ellipse at center)向外扩散 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.95) 0%,
+    /* 中心：几乎纯白 (95%不透明) */ rgba(255, 255, 255, 0.6) 40%,
+    /* 中间：半透明 */ rgba(255, 255, 255, 0) 70% /* 边缘：完全透明 */
+  );
+
+  /* 调整模糊度： */
+  /* 因为渐变自带边缘虚化，这里的 blur 可以适当减小，主要为了融合光感 */
+  filter: blur(20px);
+
+  /* --- 核心修改 End --- */
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 气泡 */
+/* --- 气泡容器 --- */
+.bubble {
+  /* 1. 使用 Flexbox 让内部文字水平排列、垂直居中 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 2. 背景渐变 (保持你之前的修改) */
+  background: linear-gradient(to right, #bf5331, #ef6a5a);
+
+  color: white;
+  padding: 0 40px; /* 左右留宽一点 */
+  height: 50px; /* 固定高度，方便让大字溢出 */
+  border-radius: 50px;
+  position: relative; /* 只要不是 overflow: hidden，大字就能显示出来 */
+  margin-bottom: 30px; /* 给上方留出空间，防止大字挡住上面的内容 */
+  margin-top: 20px; /* 给上面的大字留空间 */
+}
+
+/* 气泡下方的小三角 (保持不变) */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0;
+  border-style: solid;
+  border-color: #dd5930 transparent transparent transparent;
+}
+
+/* --- 普通文字样式 --- */
+.bubble-text {
+  font-size: 16px; /* 根据需要调整大小 */
+  font-weight: bold;
+  position: relative;
+  top: 2px; /* 微调，让小字看起来跟大字的视觉重心对齐 */
+}
+
+/* --- 核心：放大的“一生” --- */
+.highlight {
+  font-size: 36px; /* 1. 字体极大 */
+  font-weight: 900;
+  line-height: 1; /* 防止行高撑破布局 */
+  margin: 0 5px; /* 左右给点间距 */
+
+  /* 2. 关键：向上位移，产生“破格”效果 */
+  position: relative;
+  top: -8px; /* 负值越大，字越往上飞 */
+
+  /* 确保文字颜色为白色 (如果之前设了渐变字，这里要覆盖回白色) */
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #fff;
+
+  /* 让它能显示在气泡外面 */
+  z-index: 2;
+}
+
+/* --- 核心：上方的两个点 --- */
+/* 这里我们利用 ::before 和 ::after 伪元素来画这两个点 */
+
+/* 左边的点 (对应“一”) */
+.highlight::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #bf5331; /* 点的颜色，通常用深橙色 */
+  border-radius: 50%;
+
+  /* 定位 */
+  top: -12px; /* 在文字上方 */
+  left: 10px; /* 调整水平位置 */
+}
+
+/* 右边的点 (对应“生”) */
+.highlight::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #bf5331;
+  border-radius: 50%;
+
+  /* 定位 */
+  top: -12px;
+  right: 10px; /* 调整水平位置 */
+}
+
+/* 修改 .sub-title */
+.sub-title {
+  /* --- 布局核心修改 Start --- */
+  display: block; /* 强制换行 */
+  width: fit-content; /* 关键：让盒子宽度收缩包裹住文字 */
+  margin: 0 auto 15px auto; /* 上 0，左右自动(居中)，下 15px */
+  /* --- 布局核心修改 End --- */
+
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+/* 3. 使用伪元素制作左上角的“三条线”图标 */
+.sub-title::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -25px;
+  width: 25px;
+  height: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.5 14 L12.5 4' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M8 16 L3 10' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M17 16 L22 10' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotate(-50deg);
+}
+
+/* 标题 */
+.main-title {
+  font-size: 48px;
+  font-weight: 900;
+  color: #bf5331;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+.text-orange {
+  color: #bf5331;
+}
+
+/* 优势盒子 */
+.benefit-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.box {
+  background: linear-gradient(to bottom, #e6dec7, #efebdb, #e6dec7);
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid #333333;
+  border-right: 4px solid #333333;
+}
+
+.mobile-girl-wrapper {
+  display: none; /* PC端默认隐藏，只在手机端显示 */
+}
+
+
+.hero-bottom-cta {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  margin-top: 40px; /* PC端保持间距 */
+}
+
+.hero-bottom-cta p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.btn-big-cta {
+  display: inline-block;
+  background: linear-gradient(to bottom, #e87c68, #d6503e);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 80px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(230, 107, 86, 0.4);
+  transition: transform 0.2s;
+}
+.btn-big-cta:hover {
+  transform: translateY(-2px);
+}
+
+/* --- 新增：标签文字的基础样式 --- */
+.cta-label {
+  font-weight: bold;
+  font-size: 14px;
+  /* 下面这些属性是为了让它在手机端变成标签样式，PC端也可以保留 */
+  background-color: #ece8d6; /* 米色背景 */
+  color: #333;
+  display: inline-block; /* 变为块，包裹文字 */
+  padding: 8px 20px; /* 内边距 */
+  border-radius: 5px 5px 0 0; /* 上方圆角，下方直角 */
+  position: relative;
+  top: 6px; /* 往下推一点，压在按钮上 */
+  z-index: 2; /* 保证在按钮上面 */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* 淡淡的阴影 */
+}
+
+/* --- 通用 CTA 组合容器 --- */
+.cta-group {
+    /* 1. 改为 Flex 布局 */
+    display: flex;
+    /* 2. 核心：强制子元素垂直排列 (Top -> Bottom) */
+    flex-direction: column; 
+    /* 3. 核心：让子元素水平居中 */
+    align-items: center;    
+    
+    margin: 40px 0;          /* 上下留出一点呼吸空间 */
+    position: relative;      /* 为内部定位做基准 */
+    z-index: 10;             /* 保证整体层级 */
+    /* 原来的 text-align: center 在 flex 下就不重要了，由 align-items 控制 */
+}
+
+/* --- 米色标签样式 --- */
+.cta-label-bubble {
+  display: inline-block; /* 让盒子宽度随文字自动收缩 */
+  background: linear-gradient(to bottom, #e6dec7, #efebdb, #e6dec7); /* 米色背景 */
+  color: #333; /* 文字颜色 */
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px 15px; /* 内边距 */
+  border-radius: 10px; /* 圆角 */
+
+  /* 核心 1：制造重叠效果 */
+  margin-bottom: -10px; /* 负值！让下面的按钮往上提 20px */
+
+  /* 核心 2：保证标签压在按钮上面 */
+  position: relative;
+  z-index: 5; /* 比按钮层级高，压住按钮边缘 */
+
+  /* 增加立体感 (可选) */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 按钮样式微调 (确保兼容) --- */
+/* 如果你的 btn-big-cta 之前写过 margin-top，可能需要在这里重置一下 */
+.cta-group .btn-big-cta {
+  margin-top: 0;
+  position: relative;
+  z-index: 1; /* 层级比标签低 */
+}
+
+/* --- 移动端适配 (768px 以下) --- */
+@media (max-width: 768px) {
+  header {
+    padding: 5px 20px;
+  }
+  /* 1. 调整气泡容器 */
+  .bubble {
+    height: 36px; /* 稍微变矮 (PC是50px) */
+    padding: 0 15px; /* 左右内边距收窄，防止手机屏幕不够宽 */
+    margin-top: 25px; /* 调整上间距 */
+  }
+
+  /* 2. 缩小两边的普通文字 */
+  .bubble-text {
+    font-size: 13px; /* (PC是16px) */
+  }
+
+  /* 3. 缩小中间突出的“一生” */
+  .highlight {
+    font-size: 32px; /* 缩小字号 (PC是56px) */
+    top: -10px; /* 调整上浮高度，字小了就不用浮那么高 (PC是-18px) */
+    margin: 0 2px; /* 减小左右间距 */
+  }
+
+  /* 4. 调整上方两个点的大小和位置 */
+  .highlight::before,
+  .highlight::after {
+    width: 6px; /* 点变小 (PC是10px) */
+    height: 6px;
+    top: -8px; /* 点更靠近文字 */
+  }
+
+  /* 微调点的左右位置，让它们对齐更准 */
+  .highlight::before {
+    left: 4px;
+  }
+  .highlight::after {
+    right: 4px;
+  }
+  .hero-content::before {
+    width: 100%; /* 手机上宽度稍微收敛 */
+    filter: blur(30px); /* 手机屏幕小，模糊度稍微减小 */
+    opacity: 0.8; /* 手机上可能需要稍微显眼一点来保证文字可读 */
+  }
+
+  .sub-title {
+    font-size: 18px; /* 手机上字号改小 */
+    margin-bottom: 10px;
+  }
+
+  .sub-title::before {
+    /* 手机上图标也相应缩小 */
+    width: 20px;
+    height: 20px;
+    top: -12px;
+    left: -18px;
+  }
+
+  /* 隐藏 Header 里的按钮 */
+  .btn-cta-header {
+    display: none;
+  }
+
+  /* 显示汉堡菜单 */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    margin-left: auto;
+    width: 30px;
+    height: 25px;
+    position: relative;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 6px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* 汉堡按钮点击后的动画 */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -7px);
+  }
+
+  /* 移动端下拉菜单 */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #222;
+    padding: 20px 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .main-nav a {
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+  }
+
+  /* Hero 区域移动端调整 */
+  .hero {
+    padding-bottom: 60px;
+  }
+  .hero-container {
+    min-height: 403px;
+  }
+  /* 隐藏左侧女生 */
+  .girl-left {
+    display: none;
+  }
+  .girl-right {
+    display: none;
+  }
+
+  /* 2. 显示手机版女生图片容器 */
+  .mobile-girl-wrapper {
+    display: block; /* 显示出来 */
+    width: 100%; /* 容器宽度 */
+    height: 250px; /* 限制高度，防止图片太高占满屏幕 */
+    position: relative;
+    overflow: hidden; /* 裁剪多余部分 */
+    /* 1. 使用负边距让整体上移 */
+    /* 数值越大(负得越多)，往上跑得越多，下面的按钮也会紧紧跟上来 */
+    margin-top: -30px;
+
+    /* 2. 关键：防止图片遮挡住上面的"优势盒子"或文字 */
+    /* 因为父级 .hero-bottom-cta 层级(z-index:20) 比上面的内容(z-index:10) 高，
+           所以上移后图片会盖住上面的字。我们需要单独把图片层级调低。 */
+    position: relative;
+    z-index: -1;
+
+    /* 3. 防止鼠标点不到上面被遮住区域的内容 (可选，安全起见) */
+    pointer-events: none;
+
+    /* --- 核心修改 End --- */
+
+    /* 保持之前的蒙版效果 */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 20px);
+    mask-image: linear-gradient(to bottom, transparent 0px, black 20px);
+  }
+
+  /* 3. 手机版图片样式 */
+  .mobile-girl-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持比例填充，截取中间 */
+    object-position: top center; /*以此为基准，主要显示头部 */
+  }
+
+  /* 4. 调整底部区域的整体间距 */
+  .hero-bottom-cta {
+    margin-top: 0; /* 消除PC端的大间距，因为现在有了图片 */
+    padding-bottom: 40px; /* 底部留白 */
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 30%
+    ); /* 可选：给底部加个白色背景垫底 */
+  }
+
+  /* 5. 调整标签文字大小 */
+  .cta-label {
+    font-size: 12px; /* 手机上字号小一点 */
+    padding: 5px 15px;
+  }
+
+  /* 6. 按钮宽度调整 (保持你之前的设置) */
+  .btn-big-cta {
+    width: 90%;
+    font-size: 18px;
+    /* 确保按钮在最上层 */
+    position: relative;
+    z-index: 10;
+  }
+
+  /* 标题文字调整 */
+  .main-title {
+    font-size: 32px;
+  }
+
+  .benefit-boxes {
+    gap: 10px;
+  }
+
+  .box {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .cta-label-bubble {
+    font-size: 12px; /* 手机上字号小一点 */
+    padding: 8px 15px;
+    margin-bottom: -15px; /* 手机上重叠稍微少一点 */
+  }
+
+  .cta-group {
+    margin: 30px 0; /* 手机上间距缩小 */
+  }
+}

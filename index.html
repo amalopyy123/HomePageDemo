@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-JP">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAPTER TWO - Web Designer Course</title>
+    <!-- CSS链接 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JS链接 (使用 defer 确保在HTML加载后执行) -->
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- 全局包裹层：限制最大宽度为1440px -->
+    <div class="layout-wrapper">
+
+        <!-- 1. 头部导航 (Header) -->
+        <header>
+            <div class="container header-inner">
+                <!-- Logo图片 -->
+                <div class="logo">
+                    <img src="images/CHAPTER_TWO.png" alt="CHAPTER TWO Logo">
+                </div>
+
+                <!-- 汉堡菜单按钮 (手机端显示) -->
+                <div class="hamburger" id="hamburger-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- 导航菜单 -->
+                <nav class="main-nav" id="nav-menu">
+                    <ul>
+                        <li><a href="#">受講者の声</a></li>
+                        <li><a href="#">選ばれる理由</a></li>
+                        <li><a href="#">受講料金</a></li>
+                        <li><a href="#">受講の流れ</a></li>
+                        <li><a href="#">よくあるご質問</a></li>
+                    </ul>
+                </nav>
+
+                <!-- 咨询按钮 -->
+                <a href="#" class="btn-cta-header">Zoom無料相談はこちら</a>
+            </div>
+        </header>
+
+        <!-- 2. 首屏大图 (Hero Section) -->
+        <section class="hero">
+            <div class="hero-container">
+                <!-- 左侧女生 -->
+                <img src="images/GIRL_LEFT.png" class="hero-img girl-left" alt="Left Girl">
+
+                <!-- 中间文字内容 -->
+                <div class="hero-content">
+                    <div class="bubble">
+                        <span class="bubble-text">毕业后サポートが</span>
+                        <span class="highlight">一生</span>
+                        <span class="bubble-text">続く！</span>
+                    </div>
+
+                    <p class="sub-title">未経験から最短で</p>
+
+                    <h1 class="main-title">
+                        <span class="text-orange">即戦力</span>の<br>
+                        Webデザイナーに
+                    </h1>
+
+                    <div class="benefit-boxes">
+                        <div class="box">
+                            最短2ヶ月で<br>副業開始できる！
+                        </div>
+                        <div class="box">
+                            案件紹介<br>制作サポート完備！
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧女生 -->
+                <img src="images/GIRL_RIGHT.png" class="hero-img girl-right" alt="Right Girl">
+            </div>
+
+            <!-- 底部悬浮的大按钮 -->
+            <div class="hero-bottom-cta">
+                <div class="mobile-girl-wrapper">
+                    <img src="images/GIRL_RIGHT.png" alt="Right Girl Mobile">
+                </div>
+                <!-- 通用的 CTA 组合组件 -->
+                <div class="cta-group">
+
+                    <!-- 上方的米色标签 -->
+                    <div class="cta-label-bubble">
+                        10秒で簡単予約！質問相談何でもOK！
+                    </div>
+
+                    <!-- 下方的红色大按钮 -->
+                    <a href="#" class="btn-big-cta">Zoom無料相談はこちら</a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 介绍板块 (Introduction) -->
+        <section class="intro container">
+            <!-- 示例内容 -->
+            <div style="padding: 50px 0; text-align: center;">
+                <h2>Web Designer Introduction</h2>
+                <p>这里是介绍区域的内容...</p>
+            </div>
+        </section>
+
+        <!-- 底部 (Footer) -->
+        <footer>
+            <div class="container" style="text-align: center; padding: 20px;">
+                <p>&copy; CHAPTER TWO. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </div> <!-- 结束 layout-wrapper -->
+
+</body>
+
+</html>
