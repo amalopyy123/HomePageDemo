@@ -21,7 +21,6 @@ body {
   max-width: 1440px;
   margin: 0 auto; /* 居中 */
   background-color: #fff; /* 内容区域背景为白色 */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* 可选：给内容加一点阴影区分 */
   position: relative;
   overflow-x: hidden; /* 防止内部绝对定位元素溢出 */
 }
@@ -720,6 +719,7 @@ header {
 
 .section-concern {
   position: relative;
+  height: 552px;
   background-image: url(../images/concern.png);
   background-size: 130%;
   background-repeat: no-repeat;
@@ -865,12 +865,196 @@ header {
   margin-bottom: 20px; /* 下方留空给 CTA 按钮 */
 }
 
-@media (max-width: 1024px) {
-  /* 平板/笔记本稍微缩小的适配 (可选) */
-  .about-content,
-  .voice-item {
-    transform: scale(0.9); /* 如果屏幕稍小，整体稍微缩小一点 */
-  }
+.section-reason {
+  /* 底部 padding 加大，因为最后一张图片会沉得很深 */
+  padding: 80px 0 150px 0;
+  background-color: #fff;
+}
+
+/* --- Header --- */
+.reason-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.reason-sub {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.reason-main {
+  font-size: 36px;
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.reason-line {
+  width: 1px;
+  height: 40px;
+  background-color: #333;
+  margin: 0 auto;
+}
+
+/* --- List Layout --- */
+.reason-list {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  /* 核心：加大间距，因为图片下沉会占据下方空间 */
+  gap: 120px;
+}
+
+/* 单个模块容器 */
+.reason-item {
+  display: flex;
+  width: 100%;
+  align-items: flex-start; /* 顶部对齐，方便计算向下的偏移量 */
+  position: relative;
+}
+
+/* --- 左侧组 (编号 + 图片) --- */
+.reason-left-group {
+  width: 278px; /* 固定宽度 */
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2; /* 保证图片在米色框之上 */
+  transform: translateY(130px); /* 图片下沉 */
+}
+
+/* --- 编号区域 --- */
+.reason-label {
+  margin-bottom: 0px; /* 紧贴图片上方，或留一点空隙 */
+  line-height: 1;
+  position: relative;
+  /* 稍微往右移一点，或者保持原位，看设计稿 */
+  z-index: 3;
+}
+
+.num {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #e8cbb6;
+  line-height: 1;
+}
+
+.en {
+  display: block;
+  font-family: "Brush Script MT", "Cursive", cursive, serif;
+  font-size: 38px;
+  color: #bf5331;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --- 图片容器 (核心修改：加大下沉) --- */
+.reason-img-box {
+  width: 100%;
+
+  /* 1. 基础定位：距离上方编号的距离 */
+  margin-top: 10px;
+
+  /* 阴影 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+}
+
+.reason-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- 右侧组 (米色文字框) --- */
+.reason-right-group {
+  flex: 1; 
+  
+  /* 1. 删除这里的 background 属性 */
+  /* background: linear-gradient(...)  <-- 删除这行 */
+  background: none; 
+
+  /* 保持固定高度 */
+  height: 362px; 
+  margin-top: 60px; 
+  padding: 0 40px;
+  
+  position: relative;
+  z-index: 1; /* 确保层级低于左侧图片组(z-index:2) */
+  
+  display: flex;
+  align-items: center; 
+}
+/* --- 核心修改：使用伪元素制作延伸背景 --- */
+.reason-right-group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  
+  /* 2. 在这里设置渐变背景 */
+  background: linear-gradient(to right, #C6AE6D, #E7DEB9, #CAB67E);
+  
+  /* 3. 核心定位逻辑 (默认针对 01 和 03) */
+  /* 让背景向左延伸，覆盖住左侧图片区域 */
+  /* 宽度 = 100% (文字框本身) + 148px (图片框宽度) */
+  width: calc(100% + 148px);
+  
+  /* 向左偏移 278px，从而跑到了图片组的后面 */
+  left: -148px; 
+  
+  /* 4. 确保背景在文字内容的下面 */
+  z-index: -1;
+  
+  /* 可选：加一点圆角让边缘柔和，或者保持直角 */
+  /* border-radius: 4px; */
+}
+
+/* --- 针对 02 (图片在右边) 的反向处理 --- */
+/* 当父级有 reason-item-reverse 类时，改变延伸方向 */
+.reason-item-reverse .reason-right-group::before {
+  /* 取消左侧定位 */
+  left: auto;
+  
+  /* 改为向右延伸 */
+  right: -148px;
+  
+  /* 背景渐变方向可选反转，或者保持一致 */
+  /* background: linear-gradient(to left, #C6AE6D, #E7DEB9, #CAB67E); */
+}
+
+
+.reason-txt-inner {
+  width: 100%;
+}
+
+.reason-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.reason-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  text-align: justify;
+}
+
+/* --- 反转布局 (PC端) --- */
+.reason-item-reverse {
+  flex-direction: row-reverse;
 }
 
 /* --- 移动端适配 (768px 以下) --- */
@@ -1266,5 +1450,76 @@ header {
 
     /* 确保移除最大宽度限制 (如果有的话) */
     max-width: none;
+  }
+
+  /* =========================================
+   Section: 3 Reasons (選ばれる3つの理由)
+   ========================================= */
+  .section-reason {
+    padding: 50px 0;
+  }
+
+  .reason-list {
+    gap: 60px;
+  }
+
+  .reason-item,
+  .reason-item-reverse {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* 左侧组重置 */
+  .reason-left-group {
+    width: 100%;
+    transform: none; /* 关键：手机端不位移 */
+    z-index: 2;
+  }
+
+  /* 图片重置：取消下沉 */
+  .reason-img-box {
+    margin-top: 10px;
+    box-shadow: none;
+  }
+
+  .reason-img {
+    object-fit: cover;
+  }
+
+  /* 右侧米色框重置 */
+  .reason-right-group {
+    width: 100%;
+    height: auto; /* 手机端高度自适应 */
+    min-height: auto;
+    margin-top: 0; /* 取消顶部偏移 */
+    padding: 30px 20px;
+  }
+  
+ /* 手机端背景只需要填满当前框，不需要延伸 */
+  .reason-right-group::before {
+    width: 100%; /* 宽度恢复正常 */
+    left: 0;     /* 左边距归零 */
+  }
+  
+  /* 手机端反向布局复原 */
+  .reason-item-reverse .reason-right-group::before {
+    right: auto;
+    left: 0;
+    width: 100%;
+  }
+
+  /* 字体调整 */
+  .num {
+    font-size: 50px;
+  }
+  .en {
+    font-size: 32px;
+  }
+  .reason-label {
+    margin-bottom: 5px;
+  }
+
+  .reason-item-reverse .text-right {
+    text-align: right;
   }
 }
