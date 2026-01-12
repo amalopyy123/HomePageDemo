@@ -1,0 +1,254 @@
+/* =========================================
+   Section: Acquisition Support (案件獲得サポート)
+   ========================================= */
+
+/* =========================================
+   Section: Acquisition Support (案件獲得サポート)
+   ========================================= */
+
+.section-acquisition {
+  position: relative;
+  z-index: 1;
+  /* 增加上下内边距，防止内容接触到倾斜的边缘 */
+  padding: 100px 0;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  color: #fff;
+
+  /* 
+       注意：不要在这里写 overflow: hidden; 
+       否则可能会切断背景的上下尖角。
+       如果页面出现横向滚动条，请在 body 或 main 设置 overflow-x: hidden;
+    */
+}
+
+/* 伪元素制作全屏倾斜背景 */
+.section-acquisition::before {
+  content: "";
+  position: absolute;
+
+  /* 
+       关键修正 1：强制宽度为视口宽度 (100vw)
+       这样无论屏幕多宽，背景都能铺满。
+    */
+  width: 100%;
+  height: 100%;
+
+  /* 
+       关键修正 2：水平居中
+       left: 50% 加上 translateX(-50%) 确保背景始终居中对齐
+    */
+  top: 0;
+  left: 50%;
+
+  /* 背景渐变 */
+  background: linear-gradient(135deg, #bf5331 0%, #ef6a5a 100%);
+
+  transform: translateX(-50%) skewY(4deg) scale(1);
+
+  /* 置于底层 */
+  z-index: -1;
+}
+/* 标题部分 */
+.acquisition-header {
+  text-align: center;
+  margin-bottom: 60px; /* 增加一点间距 */
+}
+
+.acq-sub-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  opacity: 0.9;
+}
+
+.acq-main-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* 列表容器：PC端横向排列，Flex布局 */
+.acquisition-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px; /* 卡片之间的间距 */
+  align-items: flex-start;
+  padding: 0 130px;
+}
+
+/* 单个项目卡片 */
+.acquisition-item {
+  flex: 1; /* 三列等宽 */
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 第 2 个项目：下沉一点 */
+.acquisition-item:nth-child(2) {
+  margin-top: 30px; /* 你可以根据视觉需求调整这个数字，比如 60px 或 100px */
+}
+
+/* 第 3 个项目：下沉更多 */
+.acquisition-item:nth-child(3) {
+  margin-top: 60px; /* 建议是第 2 个项目的两倍，形成均匀阶梯 */
+}
+
+/* 图片容器：限制最大宽度和固定高度 */
+.acq-img-box {
+  position: relative;
+
+  /* 1. 设置宽度：100% 保证手机端不溢出，但 max-width 限制最大为 319px */
+  width: 100%;
+  max-width: 319px;
+
+  /* 2. 设置固定高度：严格按照要求的 224px */
+  height: 224px;
+
+  margin: 0 0 20px;
+
+  border-radius: 8px;
+  overflow: hidden; /* 剪裁超出圆角的部分 */
+  background-color: #eee; /* 图片加载前的占位色 */
+  padding: 0;
+  border: none;
+}
+
+/* 第一张图片缩放：使用 cover 模式进行剪裁 */
+.acq-img-box.acq-img-box01 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: -10px -50px;
+  transform: scale(2.2);
+}
+
+.acq-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 编号样式 (左上角的 01, 02) */
+.acq-num {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+
+  /* 
+       关键点 1：背景色与 section 的大背景保持完全一致 
+       这样视觉上看起来就像是图片那里是透明的，透出了底色
+    */
+  background: linear-gradient(135deg, #bf5331 0%, #ef6a5a 100%);
+
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 8px 18px; /*稍微调整内边距让形状更好看*/
+
+  /* 
+       关键点 2：圆角处理
+       左上角不需要圆角（贴合容器边缘）
+       右下角设置圆角，形成平滑的视觉过渡
+    */
+  border-radius: 0 0 8px 0;
+
+  /* 
+       关键点 3 (可选)：给个白色边框，增强“切断”的感觉
+       如果不需要分割线，可以把下面这两行删掉
+    */
+  /* border-right: 2px solid #fff; */
+  /* border-bottom: 2px solid #fff; */
+
+  z-index: 2;
+  line-height: 1;
+  border-top-left-radius: 8px; /* 和父元素保持一致 */
+  font-size: 2rem;
+}
+
+/* 内容文字区域 */
+.acq-content {
+  text-align: left; /* 截图中文本是左对齐 */
+}
+
+.acq-item-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  padding-bottom: 10px;
+}
+
+.acq-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  text-align: justify; /* 两端对齐让大段文字更好看 */
+}
+
+/* =========================================
+   Responsive: Mobile Styles (Max-width 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  .section-acquisition {
+    padding: 60px 0; /* 手机端减小内边距 */
+  }
+
+  .section-acquisition::before {
+    width: 100%;
+    left: 0;
+    transform: none; /* 移除复杂的位移和缩放 */
+  }
+  /* 标题文字大小调整 */
+  .acq-sub-title {
+    font-size: 1rem;
+  }
+  .acq-main-title {
+    font-size: 1.5rem; /* 稍微调小防止换行过多 */
+  }
+
+  /* 列表改为竖排 */
+  .acquisition-list {
+    flex-direction: column; /* 垂直排列 */
+    gap: 40px; /* 增加卡片间距 */
+    padding: 0 20px; /* 增加左右留白，防止紧贴屏幕边缘 */
+  }
+
+  /* 针对每个卡片的调整 */
+  .acquisition-item {
+    width: 100%;
+  }
+
+  .acq-img-box {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 319 / 224; /* 强制保持这个比例 */
+  }
+
+  /* 调整编号标签大小 */
+  .acq-num {
+    font-size: 1.2rem;
+    padding: 6px 12px;
+  }
+
+  .acq-item-title {
+    font-size: 1.3rem;
+    text-align: left;
+  }
+
+  .acq-desc {
+    font-size: 0.9rem;
+  }
+
+  /* 重置第 2 个元素的 margin-top */
+  .acquisition-item:nth-child(2) {
+    margin-top: 0;
+  }
+
+  /* 如果你对第 3 个元素也加了 margin，别忘了也要重置它 */
+  .acquisition-item:nth-child(3) {
+    margin-top: 0;
+  }
+}

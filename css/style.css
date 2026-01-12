@@ -22,7 +22,6 @@ body {
   margin: 0 auto; /* 居中 */
   background-color: #fff; /* 内容区域背景为白色 */
   position: relative;
-  overflow-x: hidden; /* 防止内部绝对定位元素溢出 */
 }
 
 /* 内部容器：用于限制文字内容的宽度 (通常 1000-1200px) */
@@ -977,22 +976,22 @@ header {
 
 /* --- 右侧组 (米色文字框) --- */
 .reason-right-group {
-  flex: 1; 
-  
+  flex: 1;
+
   /* 1. 删除这里的 background 属性 */
   /* background: linear-gradient(...)  <-- 删除这行 */
-  background: none; 
+  background: none;
 
   /* 保持固定高度 */
-  height: 362px; 
-  margin-top: 60px; 
+  height: 362px;
+  margin-top: 60px;
   padding: 0 40px;
-  
+
   position: relative;
   z-index: 1; /* 确保层级低于左侧图片组(z-index:2) */
-  
+
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 /* --- 核心修改：使用伪元素制作延伸背景 --- */
 .reason-right-group::before {
@@ -1000,21 +999,21 @@ header {
   position: absolute;
   top: 0;
   bottom: 0;
-  
+
   /* 2. 在这里设置渐变背景 */
-  background: linear-gradient(to right, #C6AE6D, #E7DEB9, #CAB67E);
-  
+  background: linear-gradient(135deg, #c6ae6d, #e7deb9, #cab67e);
+
   /* 3. 核心定位逻辑 (默认针对 01 和 03) */
   /* 让背景向左延伸，覆盖住左侧图片区域 */
   /* 宽度 = 100% (文字框本身) + 148px (图片框宽度) */
   width: calc(100% + 148px);
-  
+
   /* 向左偏移 278px，从而跑到了图片组的后面 */
-  left: -148px; 
-  
+  left: -148px;
+
   /* 4. 确保背景在文字内容的下面 */
   z-index: -1;
-  
+
   /* 可选：加一点圆角让边缘柔和，或者保持直角 */
   /* border-radius: 4px; */
 }
@@ -1024,14 +1023,13 @@ header {
 .reason-item-reverse .reason-right-group::before {
   /* 取消左侧定位 */
   left: auto;
-  
+
   /* 改为向右延伸 */
   right: -148px;
-  
+
   /* 背景渐变方向可选反转，或者保持一致 */
   /* background: linear-gradient(to left, #C6AE6D, #E7DEB9, #CAB67E); */
 }
-
 
 .reason-txt-inner {
   width: 100%;
@@ -1462,17 +1460,23 @@ header {
   .reason-list {
     gap: 60px;
   }
-
+  .container {
+    padding: 0;
+  }
   .reason-item,
   .reason-item-reverse {
     flex-direction: column;
     align-items: stretch;
+    background: linear-gradient(135deg, #c6ae6d, #e7deb9, #cab67e);
+    padding: 0 20px;
   }
+
+
 
   /* 左侧组重置 */
   .reason-left-group {
     width: 100%;
-    transform: none; /* 关键：手机端不位移 */
+    transform: translateY(-40px); /* 图片上浮 */
     z-index: 2;
   }
 
@@ -1494,13 +1498,14 @@ header {
     margin-top: 0; /* 取消顶部偏移 */
     padding: 30px 20px;
   }
-  
- /* 手机端背景只需要填满当前框，不需要延伸 */
+
+  /* 手机端背景只需要填满当前框，不需要延伸 */
   .reason-right-group::before {
     width: 100%; /* 宽度恢复正常 */
-    left: 0;     /* 左边距归零 */
+    left: 0; /* 左边距归零 */
+    background: none;
   }
-  
+
   /* 手机端反向布局复原 */
   .reason-item-reverse .reason-right-group::before {
     right: auto;
