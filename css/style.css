@@ -131,7 +131,7 @@ header {
   z-index: 5;
   max-width: 646px;
   height: 524px;
-  width: 100%;
+  max-width: 50%;
   object-fit: cover;
   object-position: left top;
   /* 确保宽度属性允许图片伸缩（配合父级的 width: auto） */
@@ -496,19 +496,15 @@ header {
   margin-bottom: 40px;
 }
 
-/* 小英文标题 */
-.eng-label {
-  display: block;
-  font-family: Arial, sans-serif; /* 英文可以换更硬朗的字体 */
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
+.logo-label {
+  display: inline-block;
+  width: 81px;
+  height: 50px;
 }
 
 /* 通用章节大标题 */
 .section-title {
-  font-size: 28px;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
 }
@@ -556,12 +552,11 @@ header {
   display: flex;
   align-items: center; /* 垂直居中 */
   justify-content: center; /* 核心：让左右两个板块整体在屏幕中间 */
-  gap: 5px; /* 核心：中间固定的间隔 */
+  gap: 45px; /* 核心：中间固定的间隔 */
 }
 
 /* 左侧文字区 */
 .about-text-col {
-  width: 400px; /* 核心：设置固定宽度 */
   flex-shrink: 0; /* 防止被挤压 */
 }
 
@@ -603,7 +598,7 @@ header {
   padding: 4px 10px;
   display: inline-block; /* 保证背景块完整 */
   margin-bottom: 5px;
-  font-size: 24px; /* 字稍微小一点点以适应框 */
+  font-size: 2rem; /* 字稍微小一点点以适应框 */
   vertical-align: middle;
 }
 
@@ -1310,11 +1305,12 @@ header {
   .about-image-col {
     width: 100%;
     max-width: 100%;
+    padding: 0 35px;
   }
 
   .about-catchphrase {
-    font-size: 20px; /* 手机字号缩小 */
-    text-align: center; /* 手机端通常居中好看 */
+    font-size: 20px;
+    text-align: left;
   }
 
   .bg-black {
@@ -1333,6 +1329,7 @@ header {
 
   .voice-list {
     gap: 40px;
+    padding: 0 35px;
   }
 
   .voice-item {
@@ -1471,8 +1468,6 @@ header {
     padding: 0 20px;
   }
 
-
-
   /* 左侧组重置 */
   .reason-left-group {
     width: 100%;
@@ -1511,6 +1506,10 @@ header {
     right: auto;
     left: 0;
     width: 100%;
+  }
+
+  .reason-right-group br{
+    display: none;
   }
 
   /* 字体调整 */

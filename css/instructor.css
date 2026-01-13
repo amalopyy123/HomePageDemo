@@ -1,0 +1,243 @@
+/* =========================================
+   Instructor Section (講師紹介)
+   ========================================= */
+.section-instructor {
+  padding: 60px 18px;
+  background-color: #fff; /* 整个区域背景白 */
+}
+
+/* 布局容器 */
+.instructor-slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* 网格布局：PC端显示2个，手机端显示1个 */
+.instructor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* PC默认两列 */
+  gap: 40px;
+  width: 100%;
+  max-width: 1000px; /* 限制卡片区域最大宽度 */
+}
+
+/* --- 卡片样式 --- */
+.instructor-card {
+  max-width: 466px;
+  border: 2px solid #e6634b; /* 橙色边框 */
+  background: #fff;
+  overflow: hidden; /* 确保圆角不溢出 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. 卡片头部 (橙色背景) */
+.inst-header {
+  background-color: #e6634b;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  min-height: 140px; /* 保持头部高度 */
+}
+
+.inst-info {
+  flex: 1;
+  z-index: 2; /* 确保文字在图片之上 */
+}
+
+.inst-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.inst-name-en {
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* 头像区域 */
+.inst-photo {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.2); /* 可选：增加一点内描边 */
+  margin-left: 15px;
+  background: #ccc; /* 图片加载前的占位色 */
+}
+
+.inst-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2. 卡片主体 (白色背景) */
+.inst-body {
+  padding: 25px;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.inst-block {
+  margin-bottom: 25px;
+}
+
+.inst-block:last-child {
+  margin-bottom: 0;
+}
+
+/* 小标题：经歷/Message */
+.inst-label {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+/* 经历列表 (方形点) */
+.inst-history-list {
+  list-style: none;
+  padding: 0;
+}
+
+.inst-history-list li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* 自定义方形列表符号 ■ */
+.inst-history-list li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  font-size: 10px;
+  color: #555; /* 深灰色点 */
+}
+
+/* 消息文本 */
+.inst-message {
+  text-align: justify;
+}
+
+/* --- 装饰元素：箭头 --- */
+.slider-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  cursor: pointer;
+  display: block; /* PC端显示 */
+}
+
+.arrow-left {
+  border-width: 15px 20px 15px 0;
+  border-color: transparent #999 transparent transparent;
+}
+
+.arrow-right {
+  border-width: 15px 0 15px 20px;
+  border-color: transparent transparent transparent #999;
+}
+.slider-arrow:hover {
+  opacity: 0.7;
+}
+
+/* --- 装饰元素：底部圆点 --- */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.active {
+  background-color: #999;
+}
+
+/* =========================================
+   Responsive (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+  /* 1. 调整容器：让中间的卡片自适应宽度，两侧留出放箭头的位置 */
+  .instructor-slider-wrapper {
+    gap: 5px; /* 减小箭头和卡片之间的间距 */
+    padding: 0 5px; /* 防止太贴屏幕边缘 */
+  }
+
+  /* 2. 重新显示箭头 */
+  .slider-arrow {
+    display: block; /* 恢复显示 */
+    flex-shrink: 0; /* 防止箭头被挤压变形 */
+  }
+
+  /* 3. 调整箭头大小：手机上稍微变小一点，显得更精致 */
+  .arrow-left {
+    border-width: 10px 14px 10px 0; /* 调整三角形大小 */
+    border-color: transparent #999 transparent transparent;
+  }
+
+  .arrow-right {
+    border-width: 10px 0 10px 14px; /* 调整三角形大小 */
+    border-color: transparent transparent transparent #999;
+  }
+
+  /* 4. 网格布局调整 */
+  .instructor-grid {
+    /* 手机端改为单列 */
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    flex: 1; /* 让卡片占据剩余空间 */
+  }
+
+  .instructor-card{
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* 5. 隐藏第二个卡片 (模拟轮播只显示一张) */
+  .instructor-card:nth-child(2) {
+    display: none;
+  }
+
+  /* 6. 卡片内部间距调整 */
+  .inst-header {
+    padding: 20px;
+  }
+
+  /* 头像大小在手机端稍微缩小 */
+  .inst-photo {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+  }
+
+  /* 调整名字文字大小，防止换行 */
+  .inst-name {
+    font-size: 20px;
+  }
+}

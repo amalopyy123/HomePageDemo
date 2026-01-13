@@ -8,6 +8,7 @@
     <!-- CSS链接 -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Acquisition_Support.css">
+    <link rel="stylesheet" href="css/instructor.css">
     <!-- JS链接 (使用 defer 确保在HTML加载后执行) -->
     <script src="js/script.js" defer></script>
 </head>
@@ -113,7 +114,12 @@
                 <div class="container">
                     <!-- 顶部标题 -->
                     <div class="section-header">
-                        <span class="eng-label">CHAPTER TWO</span>
+                        <span class="logo-label">
+                            <div class="logo">
+                                <a href="#"><img src="images/CHAPTER_TWO2.png" alt="CHAPTER TWO Logo"></a>
+                            </div>
+                        </span>
+
                         <h2 class="section-title">デザインコースとは？</h2>
                     </div>
 
@@ -426,6 +432,137 @@
                         </div>
 
                     </div>
+                </div>
+            </section>
+
+            <!-- ===========================
+             Instructor Section (講師紹介)
+             =========================== -->
+            <section class="section-instructor">
+                <div class="container">
+                    <h2 class="section-title text-center">講師紹介</h2>
+
+                    <!-- 轮播区域包裹层 -->
+                    <div class="instructor-slider-wrapper">
+
+                        <!-- 左箭头 (装饰用，如需功能需JS) -->
+                        <div class="slider-arrow arrow-left"></div>
+
+                        <!-- 卡片容器 -->
+                        <div class="instructor-grid">
+
+                            <!-- 讲师卡片 1 -->
+                            <div class="instructor-card">
+                                <!-- 橙色头部 -->
+                                <div class="inst-header">
+                                    <div class="inst-info">
+                                        <h3 class="inst-name">長田 圭二先生</h3>
+                                        <p class="inst-name-en">Nagata Keiji</p>
+                                    </div>
+                                    <div class="inst-photo">
+                                        <!-- 请替换为实际图片 -->
+                                        <img src="images/instructor_nagata.png" alt="長田 圭二">
+                                    </div>
+                                </div>
+                                <!-- 白色内容部 -->
+                                <div class="inst-body">
+                                    <!-- 经历 -->
+                                    <div class="inst-block">
+                                        <h4 class="inst-label">経歴</h4>
+                                        <ul class="inst-history-list">
+                                            <li>新卒から約10年間東京の広告代理店に勤務。主にWeb広告の運用、メディアプランニングに従事。</li>
+                                            <li>2019年より個人事業にて映像制作を開始。</li>
+                                            <li>現在はフリーランスとして大分県を拠点に、企業や店舗のPV・Web広告の企画、撮影、制作を中心に行いながら映画の制作にも携わっている。</li>
+                                        </ul>
+                                    </div>
+                                    <!-- 消息 -->
+                                    <div class="inst-block">
+                                        <h4 class="inst-label">メッセージ</h4>
+                                        <p class="inst-message">
+                                            何か新しいことに挑戦する時にはそれなりのパワーと、勇気がいると思います。本講座で、仲間と一緒に学んでもらいながら少しでも皆さんの後押しができればと考えてます。一緒に全力で映像
+                                            制作を楽しみましょう！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 讲师卡片 2 (PC端显示两个，复制一份) -->
+                            <div class="instructor-card">
+                                <div class="inst-header">
+                                    <div class="inst-info">
+                                        <h3 class="inst-name">長田 圭二先生</h3>
+                                        <p class="inst-name-en">Nagata Keiji</p>
+                                    </div>
+                                    <div class="inst-photo">
+                                        <img src="images/instructor_nagata.png" alt="長田 圭二">
+                                    </div>
+                                </div>
+                                <div class="inst-body">
+                                    <div class="inst-block">
+                                        <h4 class="inst-label">経歴</h4>
+                                        <ul class="inst-history-list">
+                                            <li>新卒から約10年間東京の広告代理店に勤務。主にWeb広告の運用、メディアプランニングに従事。</li>
+                                            <li>2019年より個人事業にて映像制作を開始。</li>
+                                            <li>現在はフリーランスとして大分県を拠点に、企業や店舗のPV・Web広告の企画、撮影、制作を中心に行いながら映画の制作にも携わっている。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="inst-block">
+                                        <h4 class="inst-label">メッセージ</h4>
+                                        <p class="inst-message">
+                                            何か新しいことに挑戦する時にはそれなりのパワーと、勇気がいると思います。本講座で、仲間と一緒に学んでもらいながら少しでも皆さんの後押しができればと考えてます。一緒に全力で映像
+                                            制作を楽しみましょう！
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 右箭头 -->
+                        <div class="slider-arrow arrow-right"></div>
+                    </div>
+
+                    <!-- 底部圆点 (装饰用) -->
+                    <div class="slider-dots">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                </div>
+            </section>
+            <section class="section-concern">
+                <!-- 黑色遮罩层 (通过 CSS 实现背景图和变暗) -->
+
+                <div class="container concern-container">
+
+                    <!-- 气泡区域 -->
+                    <div class="concern-bubbles">
+                        <!-- 左/上 气泡 -->
+                        <div class="thought-bubble bubble-left">
+                            <p>未経験からでも<br>大丈夫？</p>
+                        </div>
+                        <!-- 右/下 气泡 -->
+                        <div class="thought-bubble bubble-right">
+                            <p>自分には<br>どのコースが合ってる？</p>
+                        </div>
+                    </div>
+
+                    <!-- 文字内容区域 -->
+                    <div class="concern-content">
+                        <h2 class="concern-title">無料相談実施中！</h2>
+                        <!-- 分割线装饰 -->
+                        <div class="concern-divider"></div>
+                        <p class="concern-subtitle">プロのカウンセラーになんでも相談可能！</p>
+                    </div>
+
+                    <!-- CTA 按钮组合 (复用之前的样式类) -->
+                    <div class="cta-group">
+                        <span class="cta-label-bubble">10秒で簡単予約！質問相談何でもOK！</span>
+                        <a href="#" class="btn-big-cta">Zoom無料相談はこちら</a>
+                    </div>
+
                 </div>
             </section>
             <!-- 3. 介绍板块 (Introduction) -->
