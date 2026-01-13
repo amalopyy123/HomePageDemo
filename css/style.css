@@ -617,7 +617,7 @@ header {
   position: absolute;
   /* top: 100px;  <-- 删除这一行 */
   top: auto; /* 确保重置顶部定位 */
-  bottom: 0; /* 核心：靠底部对齐 */
+  bottom: 40px; /* 核心：靠底部对齐 */
   right: 20px; /* 保持靠右 */
 
   font-size: 100px;
@@ -1359,6 +1359,7 @@ header {
   /* 标签在手机上可能需要堆叠 */
   .tag-black {
     font-size: 12px;
+    padding: 5px 5px;
   }
 
   .section-concern {
