@@ -717,11 +717,24 @@ header {
   background-image: url(../images/concern.png);
   background-size: 130%;
   background-repeat: no-repeat;
-  padding: 80px 0;
+  padding: 70px 0;
   color: #fff;
   text-align: center;
   overflow: hidden;
   background-position: center bottom;
+}
+
+.section-concern.section-concern2 {
+  position: relative;
+  height: 595px;
+  background-image: url(../images/concern2.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 70px 0;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  background-position: center -468px;
 }
 
 /* 黑色半透明遮罩 (Overlay) */
@@ -750,7 +763,7 @@ header {
 .concern-bubbles {
   display: flex;
   justify-content: center;
-  gap: 150px; /* PC端两个气泡隔开一些距离 */
+  gap: 70px; /* PC端两个气泡隔开一些距离 */
   margin-bottom: 30px;
   width: 100%;
 }
@@ -834,23 +847,42 @@ header {
 
 /* 装饰分割线 */
 .concern-divider {
-  width: 60px;
-  height: 2px;
-  background-color: #fff;
-  margin: 0 auto 20px auto;
   position: relative;
+  height: 10px; /* 容器高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 10px 25px 10px;
 }
 /* 分割线中间的小折角 (V字型) */
-.concern-divider::after {
+.concern-divider::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 8px;
-  height: 8px;
-  background-color: #fff; /* 实心方块旋转变成菱形 */
-  /* 如果想要V字线，可以用 border 代替 background-color，这里用菱形装饰比较稳妥 */
+  width: 100%;
+  height: 1px;
+  /* 关键：使用线性渐变，中间透明，两头白色 */
+  background: linear-gradient(
+    to right,
+    white 0%,
+    white calc(50% - 10px),
+    transparent calc(50% - 3px),
+    transparent calc(50% + 3px),
+    white calc(50% + 10px),
+    white 100%
+  );
+}
+
+.concern-divider::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: rotate(45deg);
+}
+
+.mobile-br {
+  display: none;
 }
 
 .concern-subtitle {
@@ -1368,6 +1400,13 @@ header {
     background-position: 60% bottom;
   }
 
+  .section-concern.section-concern2 {
+    padding: 60px 0;
+    height: 675px;
+    background-size: 100%;
+    background-position: 60% bottom;
+  }
+
   /* --- 气泡区域调整 --- */
   .concern-bubbles {
     flex-direction: column;
@@ -1425,6 +1464,10 @@ header {
   /* 标题大小调整 */
   .concern-title {
     font-size: 32px;
+  }
+
+  .mobile-br {
+    display: block;
   }
 
   .concern-subtitle {
@@ -1509,7 +1552,7 @@ header {
     width: 100%;
   }
 
-  .reason-right-group br{
+  .reason-right-group br {
     display: none;
   }
 
