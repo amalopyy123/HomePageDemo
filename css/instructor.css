@@ -37,7 +37,7 @@
 
 /* 1. 卡片头部 (橙色背景) */
 .inst-header {
-  background-color: #e6634b;
+  background: linear-gradient(135deg, #bf5331 0%, #ef6a5a 100%);
   padding: 30px;
   display: flex;
   justify-content: space-between;
