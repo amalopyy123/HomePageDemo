@@ -295,7 +295,7 @@ header {
 }
 
 /* 修改 .sub-title */
-.sub-title {
+ .sub-title {
   /* --- 布局核心修改 Start --- */
   display: block; /* 强制换行 */
   width: fit-content; /* 关键：让盒子宽度收缩包裹住文字 */
@@ -337,12 +337,14 @@ header {
   color: transparent;
   line-height: 1;
 }
-.main-title.day-one-ready {
+.main-title .day-one-ready {
   font-size: 80px;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
-.main-title.day-one-ready-no {
-  font-size: 23px;
+.main-title .day-one-ready-no {
+  font-size: 62px;
 }
 
 /* 优势盒子 */
@@ -1114,12 +1116,12 @@ header {
 
   /* 2. 缩小两边的普通文字 */
   .bubble-text {
-    font-size: 13px; /* (PC是16px) */
+    font-size: 18px;
   }
 
   /* 3. 缩小中间突出的“一生” */
   .highlight {
-    font-size: 32px; /* 缩小字号 (PC是56px) */
+    font-size: 30px;
     top: -10px; /* 调整上浮高度，字小了就不用浮那么高 (PC是-18px) */
     margin: 0 2px; /* 减小左右间距 */
   }
@@ -1145,8 +1147,8 @@ header {
     opacity: 0.8; /* 手机上可能需要稍微显眼一点来保证文字可读 */
   }
 
-  .sub-title {
-    font-size: 18px; /* 手机上字号改小 */
+  .hero .sub-title {
+    font-size: 24px; /* 手机上字号改小 */
     margin-bottom: 10px;
   }
 
@@ -1301,7 +1303,14 @@ header {
 
   /* 标题文字调整 */
   .main-title {
-    font-size: 32px;
+    font-size: 35px;
+  }
+
+  .main-title .day-one-ready {
+    font-size: 61px;
+  }
+  .main-title .day-one-ready-no {
+    font-size: 48px;
   }
 
   .benefit-boxes {

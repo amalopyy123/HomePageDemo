@@ -59,11 +59,19 @@
   font-size: 36px;
   margin-left: 5px;
   font-weight: normal;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .price-amount .tilde {
   font-size: 64px;
   margin-left: 2px;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .price-note {
@@ -184,10 +192,6 @@
     flex-wrap: wrap; /* 如果屏幕太小自动折行 */
     padding: 15px 10px; /* 减小内边距 */
     gap: 8px;
-    background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
   }
 
   .price-label {
