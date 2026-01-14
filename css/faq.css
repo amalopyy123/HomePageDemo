@@ -1,0 +1,130 @@
+/* ===========================
+   FAQ Section Styles
+   =========================== */
+
+.section-faq {
+  padding: 80px 0;
+  background-color: #f9f9f9; /* 浅灰色背景，与整体风格一致 */
+}
+
+/* 标题样式 - 复用您之前的 section-title 结构 */
+.section-faq .section-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+}
+
+.faq-list {
+  max-width: 900px; /* 限制宽度使PC端更美观 */
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+/* 问题部分布局 */
+.faq-question {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.faq-icon-q {
+  width: 48px;
+  height: 48px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  flex-shrink: 0; /* 防止图标被压缩 */
+  z-index: 2;
+}
+
+.faq-q-text {
+  background-color: #eee;
+  padding: 12px 25px;
+  border-radius: 0 50px 50px 0; /* 右侧圆角 */
+  margin-left: -24px; /* 让背景色和圆圈重合一部分 */
+  padding-left: 40px; /* 为图标留出内部空间 */
+  font-weight: bold;
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+/* 回答部分布局 */
+.faq-answer {
+  display: flex;
+  align-items: center; /* 核心：实现垂直居中对齐 */
+  padding: 10px 0;
+  margin-top: 5px; /* 与上方Q部分的间距 */
+}
+
+.faq-icon-a {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #333; /* 根据图片看，线条比较细，用1px */
+  background-color: #fff;
+  color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  flex-shrink: 0; /* 防止图标被挤压 */
+}
+
+.faq-a-text {
+  padding-left: 20px; /* 图标和文字的间距 */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 移动端适配 (max-width: 768px) */
+@media (max-width: 768px) {
+  .section-faq {
+    padding: 50px 20px;
+  }
+
+  .section-faq .section-title {
+    margin-bottom: 40px;
+  }
+
+  .faq-icon-q,
+  .faq-icon-a {
+    width: 40px;
+    height: 40px;
+  }
+  .faq-answer {
+    align-items: flex-start; /* 核心：改为顶部对齐 */
+  }
+
+  .faq-icon-a {
+    width: 40px;
+    height: 40px;
+    /* 在顶部对齐时，如果觉得图标太靠上，可以加一点点微调 */
+    margin-top: 2px;
+  }
+
+  .faq-a-text {
+    padding-left: 15px;
+    line-height: 1.7; /* 手机端稍微增加行高更易读 */
+  }
+
+  .faq-q-text {
+    padding: 10px 20px 10px 35px;
+    margin-left: -20px;
+  }
+
+  .faq-item {
+    margin-bottom: 30px;
+  }
+}
