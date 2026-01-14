@@ -63,7 +63,7 @@ header {
 .main-nav a {
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -85,9 +85,7 @@ header {
 }
 
 /* 禁止选中的样式类 */
-.hero,
-.point-box,
-.btn-big-cta {
+* {
   -webkit-user-select: none; /* Chrome/Safari/Edge */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE/Edge */
@@ -239,7 +237,7 @@ header {
 
 /* --- 普通文字样式 --- */
 .bubble-text {
-  font-size: 16px; /* 根据需要调整大小 */
+  font-size: 23px; /* 根据需要调整大小 */
   font-weight: bold;
   position: relative;
   top: 2px; /* 微调，让小字看起来跟大字的视觉重心对齐 */
@@ -247,7 +245,7 @@ header {
 
 /* --- 核心：放大的“一生” --- */
 .highlight {
-  font-size: 36px; /* 1. 字体极大 */
+  font-size: 39px; /* 1. 字体极大 */
   font-weight: 900;
   line-height: 1; /* 防止行高撑破布局 */
   margin: 0 5px; /* 左右给点间距 */
@@ -305,7 +303,7 @@ header {
   /* --- 布局核心修改 End --- */
 
   position: relative;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   color: #333;
   letter-spacing: 1px;
@@ -328,14 +326,23 @@ header {
 
 /* 标题 */
 .main-title {
-  font-size: 48px;
+  font-size: 46px;
   font-weight: 900;
-  color: #bf5331;
   line-height: 1.2;
   margin-bottom: 30px;
+  font-weight: bold;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
 }
-.text-orange {
-  color: #bf5331;
+.main-title.day-one-ready {
+  font-size: 80px;
+}
+
+.main-title.day-one-ready-no {
+  font-size: 23px;
 }
 
 /* 优势盒子 */
@@ -355,7 +362,7 @@ header {
   width: 100%; /* 宽度自适应 */
   max-width: 280px; /* 限制最大宽度 */
   min-height: 80px; /* 保证有一个最小高度，看起来更整齐 */
-  padding: 15px 20px; /* 内边距 */
+  padding: 15px 5px; /* 内边距 */
 
   /* 2. 外观样式 (保留原设计风格) */
   background: linear-gradient(
@@ -416,7 +423,7 @@ header {
   font-size: 24px;
   font-weight: bold;
   padding: 15px 80px;
-  border-radius: 50px;
+  border-radius: 15px;
   text-decoration: none;
   box-shadow: 0 5px 15px rgba(230, 107, 86, 0.4);
   transition: transform 0.2s;
@@ -467,7 +474,7 @@ header {
   ); /* 米色背景 */
   color: #333; /* 文字颜色 */
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   padding: 5px 15px; /* 内边距 */
   border-radius: 10px; /* 圆角 */
 
@@ -504,7 +511,7 @@ header {
 
 /* 通用章节大标题 */
 .section-title {
-  font-size: 2rem;
+  font-size: 36px;
   font-weight: bold;
   color: #333;
 }
@@ -585,20 +592,20 @@ header {
 
 /* 核心文字样式 */
 .about-catchphrase {
-  font-size: 28px;
+  font-size: 34px;
   font-weight: bold;
   line-height: 1.8;
   color: #333;
 }
 
 /* 黑色背景高亮字 */
-.bg-black {
+.about-catchphrase .bg-black {
   background-color: #333;
   color: #fff;
   padding: 4px 10px;
   display: inline-block; /* 保证背景块完整 */
   margin-bottom: 5px;
-  font-size: 2rem; /* 字稍微小一点点以适应框 */
+  font-size: 34px; /* 字稍微小一点点以适应框 */
   vertical-align: middle;
 }
 
@@ -661,7 +668,7 @@ header {
 
 /* 学员头像区域 */
 .voice-img-box {
-  width: 320px; /* 核心：设置固定宽度 */
+  width: 330px; /* 核心：设置固定宽度 */
   flex-shrink: 0; /* 防止被挤压 */
 }
 
@@ -688,17 +695,17 @@ header {
   gap: 5px;
   margin-bottom: 15px;
 }
-.tag-black {
+.voice-tags .tag-black {
   background-color: #333;
   color: #fff;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 24px;
   padding: 5px 12px;
   width: fit-content;
   display: block;
 }
 .voice-desc {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   margin-bottom: 15px;
   color: #444;
@@ -839,7 +846,7 @@ header {
 
 /* --- 标题与分割线 --- */
 .concern-title {
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 900;
   margin-bottom: 20px;
   letter-spacing: 2px;
@@ -886,7 +893,7 @@ header {
 }
 
 .concern-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 20px; /* 下方留空给 CTA 按钮 */
 }
@@ -961,21 +968,32 @@ header {
   z-index: 3;
 }
 
-.num {
+.reason-label .num {
   display: block;
   font-family: Arial, sans-serif;
-  font-size: 60px;
-  font-weight: bold;
-  color: #e8cbb6;
+  font-size: 63px;
+  font-weight: 500;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+
+  /* 2. 关键属性：将背景裁剪到文字上 */
+  -webkit-background-clip: text; /* 必须加前缀以兼容 Chrome/Safari */
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
   line-height: 1;
 }
 
-.en {
+.reason-label .en {
   display: block;
-  font-family: "Brush Script MT", "Cursive", cursive, serif;
-  font-size: 38px;
-  color: #bf5331;
-  font-weight: bold;
+  font-size: 47px;
+  font-weight: 500;
+  background: linear-gradient(to right, #bf5331, #ef6a5a);
+
+  /* 2. 关键属性：将背景裁剪到文字上 */
+  -webkit-background-clip: text; /* 必须加前缀以兼容 Chrome/Safari */
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
   line-height: 1.2;
 }
 
@@ -1063,7 +1081,7 @@ header {
 }
 
 .reason-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 25px;
   line-height: 1.5;
@@ -1071,7 +1089,7 @@ header {
 }
 
 .reason-desc {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   color: #555;
   text-align: justify;
@@ -1200,7 +1218,6 @@ header {
   }
 
   .main-nav a {
-    font-size: 16px;
     display: block;
     padding: 10px;
   }
@@ -1341,12 +1358,12 @@ header {
   }
 
   .about-catchphrase {
-    font-size: 20px;
+    font-size: 29px;
     text-align: left;
   }
 
-  .bg-black {
-    font-size: 18px; /* 黑框字也缩小 */
+  .about-catchphrase .bg-black {
+    font-size: 29px; /* 黑框字也缩小 */
   }
 
   /* --- Voice 部分适配 --- */
@@ -1389,9 +1406,12 @@ header {
   }
 
   /* 标签在手机上可能需要堆叠 */
-  .tag-black {
-    font-size: 12px;
+  .voice-tags .tag-black {
+    font-size: 20px;
     padding: 5px 5px;
+  }
+  .voice-name {
+    font-size: 12px;
   }
 
   .section-concern {
@@ -1471,7 +1491,7 @@ header {
   }
 
   .concern-subtitle {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
 
@@ -1497,7 +1517,6 @@ header {
   .section-reason {
     padding: 50px 0;
   }
-
 
   .reason-list {
     gap: 60px;
@@ -1539,6 +1558,14 @@ header {
     padding: 30px 20px;
   }
 
+  .reason-title {
+    font-size: 20px;
+  }
+
+  .reason-desc {
+    font-size: 15px;
+  }
+
   /* 手机端背景只需要填满当前框，不需要延伸 */
   .reason-right-group::before {
     width: 100%; /* 宽度恢复正常 */
@@ -1558,11 +1585,11 @@ header {
   }
 
   /* 字体调整 */
-  .num {
-    font-size: 50px;
+  .reason-label .num {
+    font-size: 52px;
   }
-  .en {
-    font-size: 32px;
+  .reason-label .en {
+    font-size: 52px;
   }
   .reason-label {
     margin-bottom: 5px;

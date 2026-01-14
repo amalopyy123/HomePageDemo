@@ -11,7 +11,7 @@
 
 .section-flow .section-title.text-white {
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
   position: relative;
   z-index: 2;
   /* 确保标题在PC端不换行 */
@@ -218,12 +218,13 @@
     width: auto; /* 取消固定宽度 */
     margin-right: 0;
     margin-bottom: 10px; /* 恢复底部间距 */
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .flow-desc {
     text-align: left; /* 描述文字保持左对齐 */
     width: 100%;
+    font-size: 15px;
   }
 
   /* 手机端序号稍微调整 */

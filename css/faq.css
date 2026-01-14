@@ -7,11 +7,10 @@
   background-color: #f9f9f9; /* 浅灰色背景，与整体风格一致 */
 }
 
-/* 标题样式 - 复用您之前的 section-title 结构 */
-.section-faq .section-title {
-  font-size: 30px;
+.section-faq .section-faq-title {
+  font-size: 36px;
   font-weight: bold;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   text-align: center;
   position: relative;
 }
@@ -94,7 +93,8 @@
     padding: 50px 20px 30px 20px;
   }
 
-  .section-faq .section-title {
+  .section-faq .section-faq-title {
+    font-size: 30px;
     margin-bottom: 40px;
   }
 

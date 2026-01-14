@@ -2,102 +2,110 @@
    受講の流れ (使用 section-course-steps 避免使用 flow)
    ============================================================ */
 .section-course-steps {
-    padding: 80px 0;
-    background-color: #fff;
+  padding: 80px 0;
+  background-color: #fff;
 }
-
+.section-course-title {
+  font-size: 36px;
+}
 .steps-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
 }
 
 /* 单个卡片样式 */
 .step-item {
-    flex: 1;
-    max-width: 380px; /* 限制最大宽度防止PC端拉伸过长 */
-    position: relative;
-    border: 3px solid #d96b52; /* 橘红色边框 */
-    border-radius: 10px;
-    padding: 60px 20px 40px;
-    text-align: center;
-    background-color: #fff;
+  flex: 1;
+  max-width: 380px; /* 限制最大宽度防止PC端拉伸过长 */
+  position: relative;
+  border: 3px solid #d96b52; /* 橘红色边框 */
+  border-radius: 10px;
+  padding: 60px 20px 40px;
+  text-align: center;
+  background-color: #fff;
 }
 
 /* 顶部圆形数字 */
 .step-number {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #d96b52;
-    color: #fff;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d96b52;
+  color: #fff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 /* 图标样式：固定 79x79 */
 .step-icon {
-    width: 79px;
-    height: 79px;
-    margin: 0 auto 25px; /* 居中并留出下边距 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 79px;
+  height: 79px;
+  margin: 0 auto 25px; /* 居中并留出下边距 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .step-icon img {
-    width: 79px;
-    height: 79px;
-    object-fit: contain; /* 确保SVG在容器内不失真 */
+  width: 79px;
+  height: 79px;
+  object-fit: contain; /* 确保SVG在容器内不失真 */
 }
 
 /* 文字部分 */
 .step-item-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-    letter-spacing: 0.05em;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  letter-spacing: 0.05em;
 }
 
 .step-desc {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
 }
 
 .step-link {
-    color: #333;
-    text-decoration: underline;
-    font-weight: bold;
+  color: #333;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /* ============================================================
    移动端响应式
    ============================================================ */
 @media (max-width: 768px) {
-    
-    .steps-list {
-        flex-direction: column;
-        align-items: center;
-        gap: 60px; /* 移动端纵向间距 */
-    }
+  .section-course-title {
+    font-size: 30px;
+  }
+  .steps-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px; /* 移动端纵向间距 */
+  }
 
-    .step-item {
-        width: 100%;
-        max-width: 100%;
-        padding: 50px 15px 30px;
-    }
+  .step-item {
+    width: 100%;
+    max-width: 100%;
+    padding: 50px 15px 30px;
+  }
 
-    .section-course-steps {
-        padding: 60px 20px;
-    }
+  .section-course-steps {
+    padding: 60px 20px;
+  }
+
+  .step-desc {
+    font-size: 15px;
+  }
 }
