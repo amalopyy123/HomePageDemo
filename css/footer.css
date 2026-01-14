@@ -1,0 +1,50 @@
+/* ===========================
+   Footer Styles
+   =========================== */
+
+.site-footer {
+  background-color: #333333; /* 深灰色背景 */
+  color: #ffffff; /* 白色文字 */
+  padding: 25px 25px; /* 上下内边距，增加呼吸感 */
+  text-align: center;
+}
+
+/* 导航列表布局 */
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* 链接之间的间距 */
+  margin-bottom: 15px; /* 与下方版权信息的间距 */
+  flex-wrap: wrap; /* 屏幕过窄时自动换行 */
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 0.7; /* 悬停效果 */
+}
+
+/* 版权文字样式 */
+.copyright {
+  font-size: 20px; /* 根据设计稿，版权文字较大 */
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ===========================
+   手机端适配 (Mobile)
+   =========================== */
+@media (max-width: 768px) {
+
+
+  .footer-links ul {
+    gap: 15px; /* 缩小链接间的间距 */
+  }
+}

@@ -3,7 +3,7 @@
    =========================== */
 
 .section-faq {
-  padding: 80px 0;
+  padding: 80px 0 30px 0;
   background-color: #f9f9f9; /* 浅灰色背景，与整体风格一致 */
 }
 
@@ -91,7 +91,7 @@
 /* 移动端适配 (max-width: 768px) */
 @media (max-width: 768px) {
   .section-faq {
-    padding: 50px 20px;
+    padding: 50px 20px 30px 20px;
   }
 
   .section-faq .section-title {

@@ -904,14 +904,14 @@ header {
 }
 
 .reason-sub {
-  font-size: 16px;
+  font-size: 36px;
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
 }
 
 .reason-main {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 900;
   color: #333;
   margin-bottom: 20px;
@@ -1497,6 +1497,7 @@ header {
   .section-reason {
     padding: 50px 0;
   }
+
 
   .reason-list {
     gap: 60px;
