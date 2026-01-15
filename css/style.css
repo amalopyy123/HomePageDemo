@@ -1331,7 +1331,7 @@ header {
     font-size: 13px; /* 手机上字号缩小 */
     padding: 10px;
     min-height: 60px; /* 手机上高度减小 */
-
+    min-width: 144px;
     /* 手机上边框稍微细一点，看起来不那么笨重 */
     border-width: 1px;
     border-bottom-width: 3px;
