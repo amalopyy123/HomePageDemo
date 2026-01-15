@@ -1,0 +1,18 @@
+/* 针对所有渐变文字的通用优化 */
+.day-one-ready {
+  /* 1. 首先设置一个实色作为回退方案（老旧浏览器会显示这个颜色） */
+  color: #ef6a5a;
+}
+
+/* 2. 只有当浏览器支持 background-clip: text 时，才应用渐变和透明 */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .day-one-ready {
+    background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* 在支持渐变的情况下，再把文字设为透明 */
+    color: transparent;
+    /* 某些旧版 Safari 的额外保险 */
+    -webkit-text-fill-color: transparent;
+  }
+}

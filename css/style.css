@@ -52,6 +52,7 @@ header {
 .main-nav {
   margin-left: auto; /* 自动占据左侧空间，推到右边 */
   margin-right: 20px; /* 与按钮的距离 */
+  padding-left: 20px;
 }
 
 .main-nav ul {
@@ -295,7 +296,7 @@ header {
 }
 
 /* 修改 .sub-title */
- .sub-title {
+.sub-title {
   /* --- 布局核心修改 Start --- */
   display: block; /* 强制换行 */
   width: fit-content; /* 关键：让盒子宽度收缩包裹住文字 */
@@ -341,10 +342,18 @@ header {
   font-size: 80px;
   display: inline-block;
   margin-bottom: 10px;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .main-title .day-one-ready-no {
   font-size: 62px;
+  background: linear-gradient(to right, #bf5331 0%, #ef6a5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* 优势盒子 */

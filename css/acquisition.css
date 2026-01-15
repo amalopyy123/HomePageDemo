@@ -64,7 +64,7 @@
   justify-content: space-between;
   gap: 30px; /* 卡片之间的间距 */
   align-items: flex-start;
-  padding: 0 130px;
+  padding: 0 60px;
 }
 
 /* 单个项目卡片 */
@@ -205,7 +205,7 @@
   .acquisition-list {
     flex-direction: column; /* 垂直排列 */
     gap: 40px; /* 增加卡片间距 */
-    padding: 0 20px; /* 增加左右留白，防止紧贴屏幕边缘 */
+    padding: 0 10px; /* 增加左右留白，防止紧贴屏幕边缘 */
   }
 
   /* 针对每个卡片的调整 */
